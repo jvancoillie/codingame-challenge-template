@@ -5,7 +5,7 @@ PWD = $(shell pwd)
 IS_DOCKER = $(shell docker info > /dev/null 2>&1 && echo 1)
 
 ifeq ($(IS_DOCKER), 1)
-	DR = docker run -i -t --rm -v $(PWD):/srv/app  --name="$(PROJECT)" $(PROJECT)
+	DR = docker run -i -t --rm -v $(PWD):/srv/app --name="$(PROJECT)" $(PROJECT)
 	CONSOLE     = $(DR) bin/console
 	COMPOSER    = $(DR) composer
 	PHP         = $(DR) php
@@ -46,12 +46,9 @@ build: ## Build the container
 	docker build --target php-cli -t $(PROJECT) .
 
 sh: ## Run container
-	 $(DR) /bin/sh
+	$(DR) /bin/sh
 
 up: build sh ## Run sh in container
 
 stop: ## Stop and remove a running container
 	docker stop $(PROJECT); docker rm $(PROJECT)
-
-local: ## run cg-local app
-	java -jar ./cg-local-app-1.3.0.jar

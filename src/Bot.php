@@ -2,38 +2,20 @@
 
 namespace App;
 
-use App\Input\Reader;
-use App\Input\Referee;
+use App\Game\Game;
+use App\IO\Action;
 
 class Bot
 {
-    public const DEBUG = false;
-    public const ENABLE_MESSAGE = false;
-    public const DUMP_REFEREE = false;
-
-    public const PLAYER = 1;
-    public const OPPONENT = 2;
-
-    public function run()
+    /**
+     * @return array<Action>
+     */
+    public function play(Game $game): array
     {
-        $game = Reader::initialize();
+        $actions = [];
 
-        // game loop
-        while (true) {
-            $game = Reader::readRound($game);
-            if (self::DUMP_REFEREE) {
-                Referee::dump();
-            }
+        // TODO: implement bot logic
 
-            $actions = $game->play();
-
-            foreach ($actions as $action) {
-                echo $action;
-            }
-            if (feof(STDIN)) {
-                break;
-            }
-            Referee::reset();
-        }
+        return $actions;
     }
 }

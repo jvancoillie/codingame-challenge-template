@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Game;
+namespace App\Utils;
 
 /**
  * @psalm-template TKey of array-key

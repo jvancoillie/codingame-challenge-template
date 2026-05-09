@@ -2,7 +2,7 @@
 
 require './vendor/autoload.php';
 
-use App\Bot;
+use App\Runner;
 
-$bot = new Bot();
-$bot->run();
+$runner = new Runner();
+$runner->run();
